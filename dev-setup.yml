@@ -24,6 +24,7 @@
       - cockpit
       - cockpit-podman
       - rsync
+      - nss-mdns
       - avahi
       - bind-utils
       state: present
