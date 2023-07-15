@@ -34,6 +34,12 @@
       state: started
       enabled: true
 
+  - name: cockpit service
+    service:
+      name: cockpit.socket
+      state: started
+      enabled: true
+
 # configure local user
 
 - hosts: all
