@@ -1,0 +1,3 @@
+ cloud up
+ vi inventory.yml
+ ansible-playbook -i inventory.yml dev-setup.yml

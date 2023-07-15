@@ -1,0 +1,50 @@
+---
+
+# do root things
+
+- hosts: all
+  become: yes
+
+  tasks:
+
+  - name: disable selinux
+    ansible.posix.selinux:
+      state: disabled
+
+  - name: packages
+    yum:
+      name:
+      - epel-release
+      - yum-utils
+      - bash-completion
+      - tree
+      - vim
+      - git
+      - tmux
+      - cockpit
+      - cockpit-podman
+      - rsync
+      - avahi
+      - bind-utils
+      state: present
+
+  - name: mdns service
+    service:
+      name: avahi-daemon.service
+      state: started
+      enabled: true
+
+# configure local user
+
+- hosts: all
+  become: no
+
+  tasks:
+
+  - name: clone bin project
+    git:
+      repo: 'https://github.com/mcgarrigle/bin.git'
+      dest: bin
+
+  - name: configure environment
+    shell: ./bin/vm-configure shell
