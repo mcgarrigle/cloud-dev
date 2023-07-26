@@ -17,16 +17,29 @@
       - epel-release
       - yum-utils
       - bash-completion
-      - tree
       - vim
+      - neovim
+      - ripgrep
+      - fd-find
+      - tree
       - git
       - tmux
-      - cockpit
-      - cockpit-podman
+      - python3
+      - python3-pip
+      - make
+      - gcc
+      - g++
+      - java-latest-openjdk-devel
+      - wget
       - rsync
+      - lsof
+      - netcat
+      - wireshark-cli
       - nss-mdns
       - avahi
       - bind-utils
+      - cockpit
+      - cockpit-podman
       state: present
 
   - name: mdns service
