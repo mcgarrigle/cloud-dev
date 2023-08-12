@@ -1,0 +1,55 @@
+---
+
+# do root things
+
+- hosts: all
+  become: yes
+
+  tasks:
+
+  - name: disable selinux
+    ansible.posix.selinux:
+      state: disabled
+
+  - name: package repos
+    yum:
+      name:
+      - epel-release
+
+  - name: issue
+    copy:
+      src: ./files/issue
+      dest: /etc/
+
+  - name: motd profile
+    copy:
+      src: ./files/motd.sh
+      dest: /etc/profile.d/
+
+  - name: packages
+    yum:
+      name:
+      - yum-utils
+      - figlet
+      - bash-completion
+      - vim
+      - neovim
+      - ripgrep
+      - fd-find
+      - tree
+      - git
+      - tmux
+      - python3
+      - python3-pip
+      - make
+      - gcc
+      - g++
+      - java-latest-openjdk-devel
+      - wget
+      - rsync
+      - lsof
+      - netcat
+      - wireshark-cli
+      - bind-utils
+      - cockpit
+      state: present
