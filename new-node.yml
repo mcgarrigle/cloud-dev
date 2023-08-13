@@ -1,5 +1,4 @@
 ---
-
 # do root things
 
 - hosts: all
@@ -19,12 +18,12 @@
   - name: issue
     copy:
       src: ./files/issue
-      dest: /etc/
+      dest: /etc/issue
 
   - name: motd profile
     copy:
       src: ./files/motd.sh
-      dest: /etc/profile.d/
+      dest: /etc/profile.d/motd.sh
 
   - name: packages
     yum:
