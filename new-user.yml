@@ -18,10 +18,5 @@
       repo: 'https://github.com/mcgarrigle/bin.git'
       dest: bin
 
-  - name: clone nvim project
-    git:
-      repo: 'https://github.com/mcgarrigle/nvim.git'
-      dest: .config/nvim
-
   - name: configure environment
-    shell: ./bin/vm-configure shell
+    shell: ./bin/vm-configure shell neovim python

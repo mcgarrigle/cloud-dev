@@ -1,11 +1,11 @@
 version: '3'
 
-# project: test
+project: test
 
 guests:
 
-  dev:
-    hostname: dev
+  dev99:
+    hostname: dev99
     os: rocky9
     initialise: cloud
     cores: 4
