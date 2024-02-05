@@ -52,3 +52,22 @@
       - bind-utils
       - cockpit
       state: present
+
+  - name: ssh ca
+    copy:
+      src: ./secrets/user_ca_key.pub
+      dest: /etc/ssh/
+      mode: a+r-w
+
+  - name: sshd_config
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      line: 'TrustedUserCAKeys /etc/ssh/user_ca_key.pub'
+    notify:
+      - restart sshd
+
+  handlers:
+    - name: restart sshd
+      ansible.builtin.service:
+        name: sshd
+        state: restarted
