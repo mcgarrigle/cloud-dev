@@ -51,6 +51,7 @@
       - wireshark-cli
       - bind-utils
       - cockpit
+      - neofetch
       state: present
 
   - name: ssh ca
@@ -58,6 +59,8 @@
       src: ./secrets/user_ca_key.pub
       dest: /etc/ssh/
       mode: a+r-w
+    notify:
+      - restart sshd
 
   - name: sshd_config
     lineinfile:

@@ -1,4 +1,7 @@
-hostname -f | figlet -w 132
+echo
+hostname -f | toilet --font smblock -w 132
+echo
+neofetch --color_blocks off
 cat /etc/issue
-cat /etc/motd
+echo
 echo
