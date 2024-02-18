@@ -54,6 +54,11 @@
       - neofetch
       state: present
 
+  - name: install neofetch
+    get_url:
+      url: https://raw.githubusercontent.com/dylanaraps/neofetch/master/neofetch
+      dest: /usr/bin/neofetch
+
   - name: ssh ca
     copy:
       src: ./secrets/user_ca_key.pub
