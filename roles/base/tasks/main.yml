@@ -1,0 +1,69 @@
+---
+
+- name: disable selinux
+  ansible.posix.selinux:
+    state: disabled
+
+- name: package repos
+  yum:
+    name:
+    - epel-release
+
+- name: issue
+  copy:
+    src: ./files/issue
+    dest: /etc/issue
+
+- name: motd profile
+  copy:
+    src: ./files/motd.sh
+    dest: /etc/profile.d/motd.sh
+
+- name: packages
+  yum:
+    name:
+    - yum-utils
+    - figlet
+    - bash-completion
+    - vim
+    - neovim
+    - ripgrep
+    - fd-find
+    - tree
+    - git
+    - tmux
+    - python3
+    - python3-pip
+    - make
+    - gcc
+    - g++
+    - java-latest-openjdk-devel
+    - wget
+    - rsync
+    - lsof
+    - netcat
+    - wireshark-cli
+    - bind-utils
+    - cockpit
+    - neofetch
+    state: present
+
+- name: install neofetch
+  get_url:
+    url: https://raw.githubusercontent.com/dylanaraps/neofetch/master/neofetch
+    dest: /usr/bin/neofetch
+
+- name: ssh ca
+  copy:
+    src: ./secrets/user_ca_key.pub
+    dest: /etc/ssh/
+    mode: a+r-w
+  notify:
+    - restart sshd
+
+- name: sshd_config
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: 'TrustedUserCAKeys /etc/ssh/user_ca_key.pub'
+  notify:
+    - restart sshd
