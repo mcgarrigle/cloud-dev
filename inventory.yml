@@ -2,4 +2,12 @@ all:
   vars:
     username: "{{ lookup('ansible.builtin.env', 'USER') }}"
   hosts:
-    192.168.1.127:
+    dev:
+    swole:
+    smol:
+    node1:
+    node2:
+    node3:
+    node21:
+    node22:
+    node23:

@@ -1,0 +1,14 @@
+---
+- name: set authorized key taken from .ssh
+  ansible.posix.authorized_key:
+    user: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    state: present
+
+- name: clone bin project
+  git:
+    repo: 'https://github.com/mcgarrigle/bin.git'
+    dest: bin
+
+- name: configure environment
+  shell: ./bin/vm-configure shell neovim python

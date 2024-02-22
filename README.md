@@ -7,7 +7,11 @@ Deploy and configure a development VM in seconds
 * Configures my preferred set of bash tweaks
 
 Deployment:
-
-# cloud up
-# vi inventory.yml
-# ansible-playbook -i inventory.yml dev-setup.yml
+```
+cloud up   # using https://github.com/mcgarrigle/cloud
+```
+... or Whatever tooling for VM provision, for Terraform see here https://github.com/mcgarrigle/terraform-libvirt
+```
+vi inventory.yml
+ansible-playbook -i inventory.yml site.yml
+```
