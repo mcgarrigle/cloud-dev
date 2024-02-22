@@ -1,0 +1,22 @@
+---
+- name: packages
+  yum:
+    name:
+    - netcat
+    - wireshark-cli
+    - nss-mdns
+    - avahi
+    - bind-utils
+    state: present
+
+- name: mdns service
+  service:
+    name: avahi-daemon.service
+    state: started
+    enabled: true
+
+- name: cockpit service
+  service:
+    name: cockpit.socket
+    state: started
+    enabled: true
