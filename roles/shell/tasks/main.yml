@@ -11,4 +11,9 @@
     dest: bin
 
 - name: configure environment
-  shell: ./bin/vm-configure shell neovim python
+  shell: ./bin/vm-configure neovim python
+
+- name: add bin/bashrc to .bashrc
+  lineinfile:
+    path: .bashrc
+    line: "source $HOME/bin/bashrc"
